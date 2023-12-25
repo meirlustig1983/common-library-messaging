@@ -2,8 +2,10 @@ FROM amazoncorretto:17.0.7-alpine
 
 ARG VERSION
 
-COPY build/libs/common-library-${VERSION}.jar /usr/app/common-library.jar
+# Set the working directory in the container
+WORKDIR /usr/src/app
 
-WORKDIR /usr/app
+# Copy the JAR file into the container at /usr/src/app
+COPY build/libs/common-library-messaging-${VERSION}.jar /usr/src/app/common-library-messaging.jar
 
-CMD ["java", "-jar", "common-library.jar"]
+CMD ["java", "-jar", "common-library-messaging.jar"]

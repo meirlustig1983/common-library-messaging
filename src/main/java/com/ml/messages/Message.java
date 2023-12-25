@@ -1,4 +1,4 @@
-package com.ml.commonlibrary.messages;
+package com.ml.messages;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
