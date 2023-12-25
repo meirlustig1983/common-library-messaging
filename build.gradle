@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("maven-publish")
 }
 
 group = "com.ml"
@@ -10,13 +11,31 @@ repositories {
 }
 
 dependencies {
-
     compileOnly 'org.projectlombok:lombok:1.18.30'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
-
     implementation 'com.google.guava:guava:32.1.3-jre'
 }
 
 tasks.test {
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            // Use the GitHub Packages URL
+            url = uri("https://maven.pkg.github.com/USERNAME/REPOSITORY")
+            credentials {
+                // Your GitHub Packages username and token
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME_GITHUB")
+                password = project.findProperty("gpr.token") ?: System.getenv("TOKEN_GITHUB")
+            }
+        }
+    }
 }
