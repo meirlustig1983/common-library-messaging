@@ -29,13 +29,12 @@ publishing {
 
     repositories {
         maven {
-            // Use the GitHub Packages URL
-            url = uri("https://maven.pkg.github.com/USERNAME/REPOSITORY")
+            url = uri("https://maven.pkg.github.com/meirlustig1983/common-library-messaging")
             credentials {
-                // Your GitHub Packages username and token
                 username = project.findProperty("gpr.user") ?: System.getenv("USERNAME_GITHUB")
                 password = project.findProperty("gpr.token") ?: System.getenv("TOKEN_GITHUB")
             }
         }
     }
+
 }
