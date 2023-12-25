@@ -34,3 +34,8 @@ jobs:
       env:
         USERNAME: ${{ github.actor }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Debug
+      run: |
+        echo "GitHub Actor: ${{ github.actor }}"
+        echo "GitHub Token: ${{ secrets.GITHUB_TOKEN }}"
+        ./gradlew tasks
