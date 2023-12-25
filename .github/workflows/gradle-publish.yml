@@ -22,9 +22,6 @@ jobs:
         server-id: github
         settings-path: ${{ github.workspace }}
 
-    - name: Get GitHub username
-      run: echo "USERNAME_GITHUB=${{ github.actor }}" >> $GITHUB_ENV
-
     - name: Build with Gradle
       uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
       with:
